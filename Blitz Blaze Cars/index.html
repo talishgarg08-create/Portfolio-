@@ -1,1 +1,105 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Car Customizer</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    .car-container {
+        margin: 20px auto;
+        width: 400px;
+    }
+
+    .car {
+        width: 100%;
+        transition: 0.3s;
+    }
+
+    .controls {
+        margin-top: 20px;
+        background: #222;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    button {
+        margin: 5px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .red { background: red; }
+    .blue { background: dodgerblue; }
+    .black { background: black; color: white; }
+    .silver { background: silver; }
+
+    .wheel-btn {
+        background: #555;
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🚗 Car Customizer</h1>
+<p>Select color and wheels</p>
+
+<div class="car-container">
+    <img id="carImage" class="car" src="https://i.imgur.com/3R9Z1.jpg" alt="Car">
+</div>
+
+<div class="controls">
+    <h3>🎨 Choose Color</h3>
+    <button class="red" onclick="changeColor('red')">Red</button>
+    <button class="blue" onclick="changeColor('blue')">Blue</button>
+    <button class="black" onclick="changeColor('black')">Black</button>
+    <button class="silver" onclick="changeColor('silver')">Silver</button>
+
+    <h3>🛞 Choose Wheels</h3>
+    <button class="wheel-btn" onclick="changeWheels(1)">Sport</button>
+    <button class="wheel-btn" onclick="changeWheels(2)">Classic</button>
+</div>
+
+<script>
+    function changeColor(color) {
+        const car = document.getElementById("carImage");
+
+        if (color === "red") {
+            car.src = "https://i.imgur.com/3R9Z1.jpg";
+        } else if (color === "blue") {
+            car.src = "https://i.imgur.com/2F8Zx.jpg";
+        } else if (color === "black") {
+            car.src = "https://i.imgur.com/8X2Zp.jpg";
+        } else if (color === "silver") {
+            car.src = "https://i.imgur.com/Z6QJk.jpg";
+        }
+    }
+
+    function changeWheels(type) {
+        if (type === 1) {
+            alert("Sport wheels selected 🛞🔥");
+        } else {
+            alert("Classic wheels selected 🛞✨");
+        }
+    }
+</script>
+
+</body>
+</html>
