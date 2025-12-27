@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blitz Blaze Cars | Performance Stories</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor cursor-dot" id="cursorDot"></div>
+    <div class="cursor cursor-ring" id="cursorRing"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/Logo.jpg" alt="Blitz Blaze Cars" class="logo-img">
+                <span class="logo-text">Blitz Blaze Cars</span>
+                <span class="logo-accent"></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link" data-cursor="nav">Home</a></li>
+                <li><a href="#collection" class="nav-link" data-cursor="nav">Lineup</a></li>
+                <li><a href="#story" class="nav-link" data-cursor="nav">Story</a></li>
+                <li><a href="#gearbox" class="nav-link" data-cursor="nav">Gearbox</a></li>
+                <li><a href="#map" class="nav-link" data-cursor="nav">Map</a></li>
+                <li><a href="#contact" class="nav-link" data-cursor="nav">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" data-cursor="nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" id="hero" data-scroll="slow">
+            <div class="hero-layer hero-grid"></div>
+            <div class="hero-layer hero-vignette"></div>
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <p class="eyebrow">Performance Atelier</p>
+                    <h1 class="hero-title">
+                        Quiet power.<br>
+                        Built to feel amazing.
+                    </h1>
+                    <p class="hero-subtitle">
+                        A calm walk through legendary cars. Every move is smooth, every detail feels careful.
+                    </p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" id="exploreBtn" data-cursor="cta">Enter the Gallery</button>
+                        <button class="btn btn-ghost" data-cursor="cta" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Get Information</button>
+                    </div>
+                </div>
+                <div class="hero-visual" data-scroll="parallax">
+                    <div class="hero-car">
+                        <div class="hero-badge">Blitz Blaze Cars</div>
+                        <div class="engine-container">
+                            <canvas id="engineCanvas" class="engine-canvas"></canvas>
+                            <div class="engine-overlay">
+                                <div class="rpm-indicator">
+                                    <div class="rpm-bar" id="rpmBar"></div>
+                                    <span class="rpm-label">RPM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-caption">
+                            Balanced weight and quiet power so the engine does the talking.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span class="line"></span>
+                <span>scroll with intent</span>
+            </div>
+        </section>
+
+        <section class="collection" id="collection">
+            <div class="section-header">
+                <p class="eyebrow">The Lineup</p>
+                <h2>Eight cars, eight stories</h2>
+                <p class="section-subtitle">
+                    Each car shows a simple story: why it matters and how it feels to drive.
+                </p>
+            </div>
+            <div class="collection-grid" id="collectionGrid">
+                <!-- cards populated by JS -->
+            </div>
+        </section>
+
+        <section class="story-section" id="story">
+            <div class="section-header">
+                <p class="eyebrow">Design Rationale</p>
+                <h2>Form follows function</h2>
+                <p class="section-subtitle">
+                    Every curve, line, and detail in our cars is crafted with purpose—blending performance, luxury, and timeless elegance.
+                </p>
+            </div>
+            <div class="story-grid">
+                <div class="story-block" data-scroll="stagger">
+                    <h3>Aerodynamic precision</h3>
+                    <p>Every surface is shaped by wind. From the subtle curves to aggressive air intakes, form serves speed and efficiency.</p>
+                </div>
+                <div class="story-block" data-scroll="stagger">
+                    <h3>Material excellence</h3>
+                    <p>Premium leather, carbon fiber, and hand-finished metals create an environment that feels both luxurious and purposeful.</p>
+                </div>
+                <div class="story-block" data-scroll="stagger">
+                    <h3>Driver-focused ergonomics</h3>
+                    <p>Controls are placed where your hands naturally fall. Every switch, dial, and screen is positioned for intuitive operation.</p>
+                </div>
+                <div class="story-block" data-scroll="stagger">
+                    <h3>Timeless aesthetics</h3>
+                    <p>Designs that age gracefully. Clean lines and balanced proportions ensure these cars look stunning for decades.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="gearbox-section" id="gearbox">
+            <div class="section-header">
+                <p class="eyebrow">Interactive Experience</p>
+                <h2>Gearbox Simulator</h2>
+                <p class="section-subtitle">
+                    Shift through the gears and feel how torque and speed change with each gear selection.
+                </p>
+            </div>
+            <div class="gearbox-wrapper">
+                <div class="gearbox-display">
+                    <div class="gear-indicator">
+                        <div class="current-gear" id="currentGear">N</div>
+                        <div class="gear-label">Current Gear</div>
+                    </div>
+                    <div class="performance-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Torque</div>
+                            <div class="metric-value" id="torqueValue">0</div>
+                            <div class="metric-unit">Nm</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="torqueBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Speed</div>
+                            <div class="metric-value" id="speedValue">0</div>
+                            <div class="metric-unit">km/h</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="speedBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">RPM</div>
+                            <div class="metric-value" id="rpmValue">0</div>
+                            <div class="metric-unit">rpm</div>
+                            <div class="metric-bar">
+                                <div class="metric-fill" id="rpmBarGear" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gearbox-controls">
+                    <div class="gear-selector">
+                        <button class="gear-btn" data-gear="N" id="gearN">N</button>
+                        <div class="gear-row">
+                            <button class="gear-btn" data-gear="1" id="gear1">1</button>
+                            <button class="gear-btn" data-gear="2" id="gear2">2</button>
+                            <button class="gear-btn" data-gear="3" id="gear3">3</button>
+                        </div>
+                        <div class="gear-row">
+                            <button class="gear-btn" data-gear="4" id="gear4">4</button>
+                            <button class="gear-btn" data-gear="5" id="gear5">5</button>
+                            <button class="gear-btn" data-gear="6" id="gear6">6</button>
+                        </div>
+                        <button class="gear-btn reverse" data-gear="R" id="gearR">R</button>
+                    </div>
+                    <div class="gearbox-info">
+                        <p id="gearDescription">Select a gear to see performance metrics change.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section" id="map">
+            <div class="section-header">
+                <p class="eyebrow">Experience Points</p>
+                <h2>Where you can visit</h2>
+                <p class="section-subtitle">Simple map with showrooms and driving routes you can explore.</p>
+            </div>
+            <div class="map-wrapper">
+                <div class="map-canvas" id="mapCanvas">
+                    <div class="map-marker" style="top:32%;left:38%;" data-location="Delhi">
+                        <span class="pin"></span>
+                        <div class="marker-info">
+                            <h4>Auto motive Delhi</h4>
+                            <p>Premium car showroom and service center</p>
+                        </div>
+                    </div>
+                    <div class="map-marker" style="top:42%;left:52%;" data-location="Mumbai1">
+                        <span class="pin"></span>
+                        <div class="marker-info">
+                            <h4>Brotomotive Mumbai</h4>
+                            <p>Luxury automotive experience center</p>
+                        </div>
+                    </div>
+                    <div class="map-marker" style="top:55%;left:46%;" data-location="Mumbai2">
+                        <span class="pin"></span>
+                        <div class="marker-info">
+                            <h4>Matrix Mumbai</h4>
+                            <p>Premium car dealership and customization</p>
+                        </div>
+                    </div>
+                    <div class="map-marker" style="top:48%;left:28%;" data-location="Mumbai3">
+                        <span class="pin"></span>
+                        <div class="marker-info">
+                            <h4>Mansory Mumbai</h4>
+                            <p>Exclusive luxury car modifications and sales</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-list" id="mapList">
+                    <div class="map-card" data-location="Delhi">
+                        <h4>Auto motive Delhi</h4>
+                        <p>Premium car showroom and service center offering a wide range of luxury vehicles with expert consultation and after-sales support.</p>
+                    </div>
+                    <div class="map-card" data-location="Mumbai1">
+                        <h4>Brotomotive Mumbai</h4>
+                        <p>Luxury automotive experience center featuring high-end vehicles, test drives, and personalized car selection services.</p>
+                    </div>
+                    <div class="map-card" data-location="Mumbai2">
+                        <h4>Matrix Mumbai</h4>
+                        <p>Premium car dealership and customization hub specializing in luxury vehicles with bespoke modification options.</p>
+                    </div>
+                    <div class="map-card" data-location="Mumbai3">
+                        <h4>Mansory Mumbai</h4>
+                        <p>Exclusive luxury car modifications and sales, offering world-class customization services for high-performance vehicles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="section-header">
+                <p class="eyebrow">Get Information</p>
+                <h2>Request car details</h2>
+                <p class="section-subtitle">Ask us anything about our vehicles. We'll get back to you soon.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-copy">
+                    <h3>Want to know more about a car?</h3>
+                    <p>Fill out the form below and we'll send you detailed information about any vehicle in our collection. We reply within one business day.</p>
+                    <div class="contact-meta">
+                        <div><strong>Email</strong><span>talishgarg08@gmail.com</span></div>
+                        <div><strong>Hours</strong><span>Mon–Sat · 09:00–22:00 IST</span></div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <input type="text" id="name" name="name" placeholder="Name" required>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="intent" name="intent" placeholder="Which car are you interested in?" required>
+                    </div>
+                    <div class="form-row">
+                        <textarea id="message" name="message" rows="4" placeholder="What information would you like about this car?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-cursor="cta">Request Information</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-text">Blitz Blaze Cars</span>
+                <p>Car stories told with care, weight, and purpose.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#collection">Lineup</a>
+                <a href="#story">Philosophy</a>
+                <a href="#map">Visits</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-meta">
+                <div>© 2025 Blitz Blaze Cars. All rights reserved.</div>
+                <div style="margin-top: 8px; color: var(--muted); font-size: 0.85rem;">Website created by Talish Garg</div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="detail-overlay" id="detailOverlay" aria-hidden="true">
+        <div class="detail-panel">
+            <button class="detail-close" id="detailClose" aria-label="Close detail" data-cursor="nav">×</button>
+            <div id="detailContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
